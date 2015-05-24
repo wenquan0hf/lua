@@ -1,7 +1,7 @@
 #Lua——Web 编程  
 
-Lua 是一种非常灵活的语言，它经常被用大各种平台上，包括 web 应用。Kepler 社区成立于 2004 年，一直致力于为 Lua 提供开源的 web 组件。  
-尽管已经推出了许多的 Lua web 应用框架，但是我们还是想主要介绍一下由 Kepler 社区开发的 web 开发组件。  
+Lua 是一种非常灵活的语言，它经常被用在各种平台上，包括 web 应用。其中关于 Lua Web 项目最著名的就是 Kepler 项目了。Kepler 社区成立于 2004 年，一直致力于为 Lua 提供开源的 web 组件。  
+尽管其它开发者也已经推出了许多的 Lua web 应用框架，但是我们还是想主要介绍一下由 Kepler 社区开发的 web 开发组件。  
 
 ##应用与框架  
 
@@ -18,9 +18,9 @@ Lua 是一种非常灵活的语言，它经常被用大各种平台上，包括 
 ###Orbit  
 
 Orbit 是一个 MVC 类型的 Lua web 框架。它完全抛弃了 CGILua 的脚本即应用的模型，在此模型中每个 Orbit 应用都可以放在一个文件中，如果你愿意，每个应用也可以被分割在多个文件到。  
-所有的 Orbit 应用都支持 WSAPI 协议，所以它们也就兼容 Xavante, CGI 和 Fastcgi。它自带了一个启动器，以启动一个 Xavante 实例便于开发。  
+所有的 Orbit 应用都支持 WSAPI 协议，所以它们也就兼容 Xavante, CGI 和 Fastcgi。它还自带了一个启动器，以启动一个 Xavante 实例便于开发。  
 安装 Orbit 最简单的方式是使用 LuaRocks。 luarocks 用命令行的方式安装 orbit。因此，首先你需要安装<a href="http://luarocks.org/en/Download">luaRocks</a>。  
-如果你没安装所需的依赖，下面的步骤引导你在 Unix/Linux 环境下搭建 Orbit 环境。  
+如果你没安装所需的依赖，下面的步骤会引导你在 Unix/Linux 环境下搭建 Orbit 环境。  
 
 ####安装 Apache  
 
@@ -53,7 +53,7 @@ $ sudo luarocks install wsapi-fcgi
 $ sudo raj /etc/apache2/sites-available/default
 ```  
 
-在配置文件的 <Directory /var/www/> 节中增如下的节。如果下面节中有 AllowOverride None， 你需将 None 改为 All，如此 .htaccess 才能覆盖本地配置。  
+在配置文件的 <Directory /var/www/> 的节中增如下的节。如果下面节中有 AllowOverride None， 你需将 None 改为 All，如此 .htaccess 才能覆盖本地配置。  
 
 ```
 <IfModule mod_fcgid.c>
@@ -69,7 +69,7 @@ $ sudo raj /etc/apache2/sites-available/default
 </IfModule>
 ```  
 
-重启服务器使得配置更改生效。  
+配置好后重启服务器使得配置更改生效。  
 为了使你的应用可以运行，你需要在你的 Orbit 应用根目录下的 .htaccess 文件中添加 +ExecCGI，在本例中根目录为 /var/www。  
 
 ```
@@ -84,18 +84,18 @@ DirectoryIndex index.ws
 -- index.lua
 require"orbit"
 
--- declaration
+-- 声明
  module("myorbit", package.seeall, orbit.new)
 
--- handler
+-- 处理程序
 function index(web)
   return my_home_page()
 end
 
--- dispatch
+-- 分配器
 myorbit:dispatch_get(index, "/", "/index")
 
--- Sample page
+-- 样例页面
 function my_home_page()
    return [[
     <head></head>
@@ -160,7 +160,7 @@ orbit.htmlify(wrap,test)
 print(test())
 ```  
 
-你可以在<a href="http://keplerproject.github.io/orbit/example.html">官网</a>找到 orbit 的详细教程。  
+你可以在<a href="http://keplerproject.github.io/orbit/example.html">官网</a>找到关于 orbit 更加详细内容。  
 
 ###WSPAI  
 
@@ -178,7 +178,7 @@ WSAPI 支持的服务器和接口包括：
 	<li>Xavante</li>
 </ul>
 
-WSAPI 提供了大量库方便我们使用 Lua 进行 Web 应用的开发。下面列出了其运行的部分特征：  
+WSAPI 提供了大量库方便我们使用 Lua 进行 Web 应用的开发。下面列出了其支持的部分特征：  
 <ul>
 	<li>请求处理</li>
 	<li>输出缓存</li>
@@ -260,7 +260,7 @@ xavante.HTTP{
 }
 ```  
 
-如果使用 Xavante 虚拟机，xavante.HTTP 需要被修改为如下内容：  
+如果使用 Xavante 虚拟机，xavante.HTTP 需要被修改为如下：  
 
 ```
 xavante.HTTP{
@@ -281,7 +281,7 @@ xavante.HTTP{
 	<li>Cosmo：一个安全模板引擎，保护应用免受来自模板的任何代码攻击。</li>
 	<li>Coxpcall：封装 Lua 原生的 pcall 和 xpcall　函数，提供协程兼容的版本。</li>
 	<li>LuaFileSystem：以可移植的方式访问底层目录结构和文件属性。</li>
-	<li>Rings:提供在 Lua　中创建新的　Lua state 的方法。</li>
+	<li>Rings:提供在 Lua 中创建新的　Lua state 的方法。</li>
 </ul>
 
 ##结束语  
