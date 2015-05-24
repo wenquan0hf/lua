@@ -24,5 +24,5 @@
   - [Object Oriented](object-oriented.md)
   - [Web Programming](web-programming.md)
   - [Database Access](database-access.md)
-  - [Game Programing](game-programing.md)
+  - [Game Programing](game-programming.md)
   - [Standard Libraries](standard-libraries.md)
