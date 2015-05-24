@@ -21,11 +21,11 @@ Lua 调试库包括的函数如下表所示。
 	</tr>
 	<tr>
 		<td>4</td>
-		<td>getinfo(optional thread,function or stack leve,optional flag)：返回保存函数信息的一个表。你可以直接指定函数，或者你也可以通过一个值指定函数，该值为函数在当前线程的函数调用栈的层次。其中，0 表示当前函数（getinfo 本身）；层次 1 表示调用 getinfo 的函数，依次类推。如果数值大于活跃函数的问总量，getinfo 则返回 nil。</td>
+		<td>getinfo(optional thread,function or stack leve,optional flag)：返回保存函数信息的一个表。你可以直接指定函数，或者你也可以通过一个值指定函数，该值为函数在当前线程的函数调用栈的层次。其中，0 表示当前函数（getinfo 本身）；层次 1 表示调用 getinfo 的函数，依次类推。如果数值大于活跃函数的总量，getinfo 则返回 nil。</td>
 	</tr>
 	<tr>
 		<td>5</td>
-		<td>getlocal(optional thread,stack level,local index)：此函数返回在 level 层次的函数中指定索引的局部变量和对应的值。如果指定的索引处不存在局部变量，则返回 nil。当 level 超出范围时，则并抛出错误。</td>
+		<td>getlocal(optional thread,stack level,local index)：此函数返回在 level 层次的函数中指定索引位置处的局部变量和对应的值。如果指定的索引处不存在局部变量，则返回 nil。当 level 超出范围时，则抛出错误。</td>
 	</tr>
 	<tr>
 		<td>6</td>
@@ -45,7 +45,7 @@ Lua 调试库包括的函数如下表所示。
 	</tr>
 	<tr>
 		<td>10</td>
-		<td>sethook(optional thread,hook function,hook mask string with "c" and/or "r" and/or "l",optional instruction count)：把指定函数设置为钩子。字符串掩码和计数值表示钩子被调用的时机。这里，c 表示调用函数时都会执行钩子；r 表示每次从函数中返回时都调用钩子；l 表示每进入新的一行调用钩子。</td>
+		<td>sethook(optional thread,hook function,hook mask string with "c" and/or "r" and/or "l",optional instruction count)：把指定函数设置为钩子。字符串掩码和计数值表示钩子被调用的时机。这里，c 表示每次调用函数时都会执行钩子；r 表示每次从函数中返回时都调用钩子；l 表示每进入新的一行调用钩子。</td>
 	</tr>
 	<tr>
 		<td>11</td>
@@ -64,7 +64,7 @@ Lua 调试库包括的函数如下表所示。
 		<td>traceback(optional thread,optional meesage string,opitona level argument)：用 traceback 构建扩展错误消息。</td>
 	</tr>
 </table>
-上面的表中列出了 Lua 的全部调试函数，我们经常用到的调试库都会用到上面的函数，它让调试变得非常容易。虽然提供了便捷的接口，但是想要用上面的函数创建一个自己的调试器并是件容易的事。无论怎样，我们可以看一下下面这个例子中怎么用到这些调试函数的。  
+上面的表中列出了 Lua 的全部调试函数，我们经常用到的调试库都会用到上面的函数，它让调试变得非常容易。虽然提供了便捷的接口，但是想要用上面的函数创建一个自己的调试器并不是件容易的事。无论怎样，我们可以看一下下面这个例子中怎么使用这些调试函数的。  
 
 ```
 function myfunction ()
@@ -152,7 +152,7 @@ index	2	n	=	2
 <ul>
 	<li>RemDebug：RemDebug 是一个远程的调试器，它支持 Lua 5.0 和 5.1 版本。允许远程调试 Lua 程序，设置断点以及查看程序的当前状态。同时，它还能调试 CGILua 脚本。</li>
 	<li>clidebugger：此调试器是用纯 Lua 脚本开发的命令行调试工具，支持 Lua 5.1。除了 Lua 5.1 标准库以外，它不依赖于任何其它的 Lua 库。虽然它受到了 RemDebug 影响而产生的，但是它没有远程调试的功能。</li>
-	<li>ctrace：跟踪 Lua API 调用的小工具。<li>
+	<li>ctrace：跟踪 Lua API 调用的小工具。</li>
 	<li>xdbLua：windows 平台下的 Lua 命令行调试工具。</li>
 	<li>LuaInterface - Debuger：这个项目是 LuaInterface 的扩展，它对 Lua 调试接口进行进一步的抽象，允许通过事件和方法调用的方式调试程序。</li>
 	<li>RIdb：使用套接字的远程 Lua 调试器，支持 Linux 和 Windows 平台。它的特性比任何其它调试器都丰富。</li>
@@ -167,9 +167,9 @@ index	2	n	=	2
 下面列出了几种图形界面的调试工具。  
 
 <ul>
-	<li>ScitTE：Windows 系统上默认的 Lua 集成开发环境，它提供了丰富的调试功能，比如，断点、单步、跳过、查看变量等等。</li>
+	<li>SciTE：Windows 系统上默认的 Lua 集成开发环境，它提供了丰富的调试功能，比如，断点、单步、跳过、查看变量等等。</li>
 	<li>Decoda：一个允许远程调试的图形界面调试工具。</li>
 	<li>ZeroBrane Studio：一个 Lua 的集成开发环境，它集成了远程调试器、栈视图、远程控制终端、静态分析等诸多功能。它兼容各类 Lua 引擎，例如 LuaJIT,Love2d,Moai等。支持 Windows, OSX, Linux；开源。</li>
 	<li>akdebugger：eclipse 的 Lua 调试器和编辑器插件。</li>
-	<li>luaedit：支持运程调试、本地调试、语法高亮、自动补完、高级断点管理（包括有条件地触发断和断点计数）、函数列表、全局和本地变量列表、面对方案的管理等。<li>
+	<li>luaedit：支持运程调试、本地调试、语法高亮、自动补完、高级断点管理（包括有条件地触发断和断点计数）、函数列表、全局和本地变量列表、面对方案的管理等。</li>
 </ul>
