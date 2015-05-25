@@ -26,11 +26,11 @@
 	</tr>
 	<tr>
 		<td>5</td>
-		<td>os.exit([code[,close]])：调用 ANSI C 的 exit 函数，结束程序。如果 code 为　true, 则返回状态为 EXIT_SUCESS；若 code 为 false,则返回状态为 EXIT_FAILURE。如果 code 为数值，则返回状态也就为些数值。</td>
+		<td>os.exit([code[,close]])：调用 ANSI C 的 exit 函数，结束程序。如果 code 为　true, 则返回状态为 EXIT_SUCESS；若 code 为 false,则返回状态为 EXIT_FAILURE。如果 code 为数值，则返回状态也就为该数值。</td>
 	</tr>
 	<tr>
 		<td>6</td>
-		<td>os.getenv(varname)：返回进程的环境变量 varname 的值，如果环境变量没有定义则返回 nil。</td>
+		<td>os.getenv(varname)：返回进程的环境变量 varname 的值，如果此环境变量没有定义则返回 nil。</td>
 	</tr>
 	<tr>
 		<td>7</td>
@@ -59,20 +59,20 @@
 示例如下：  
 
 ```
--- Date with format
+-- 格式化日期
 io.write("The date is ", os.date("%m/%d/%Y"),"\n")
 
--- Date and time
+-- 日期与时间
 io.write("The date and time is ", os.date(),"\n")
 
--- Time
+-- 时间
 io.write("The OS time is ", os.time(),"\n")
 
--- Wait for some time
+-- 等待一段时间
 for i=1,1000000 do
 end
 
--- Time since Lua started
+-- Lua 启动的时长
 io.write("Lua started before ", os.clock(),"\n")
 ```  
 
