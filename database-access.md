@@ -1,22 +1,22 @@
 #Lua——数据库访问  
 
-简单的数据操作，我们用文件就可以处理。但是，某些时候文件操作存在性能、扩展性等问题。这时候，我们就需要使用数据库。LuaSQL 是提供不同 SQL 数据库操作支持的库。它包括：  
+简单的数据操作，我们用文件就可以处理。但是，某些时候文件操作存在性能、扩展性等问题。这时候，我们就需要使用数据库。LuaSQL 是一个提供数据库操作的库，它支持多种 SQL 数据库的操作。包括：  
 
 <ul>
 	<li>SQLite</li>
 	<li>MySQL</li>
 	<li>ODBC</li>
 </ul>  
-在本教程中，我们会学到 Lua 中 MySQL 数据库的操作。其中的操作具有一般性，它们能也应该可以移植到其它类型的数据库中。首先让我们看一下如何操作 MySQL 数据库。  
+在本教程中，我们会讲解用 Lua 语言对 MySQL 数据库与 SQLite 数据库进行操作。这些操作具有一般性，它们也可以移植到其它类型 SQL 数据库中。首先让我们看一下如何操作 MySQL 数据库。  
 
-##MySQL 数据库设置 
+##MySQL 数据库环境设置 
 
-为了下面的例子可以正确演示，我们需要初始化数据库设置。我们假设你已经完成了如下的工作：  
+为了下面的例子可以正确演示，我们需要首先初始化数据库设置。我们假设你已经完成了如下的工作：  
 
 
 <ul>
-	<li>安装 MySQL 数据库，使用默认用户名 root， 密码为： 123456。</li>
-	<li>创建数据库 test。</li>
+	<li>安装 MySQL 数据库，使用默认用户名 root， 默认密码为： 123456。</li>
+	<li>已经创建数据库 test。</li>
 	<li>已经阅读过关于 MySQL 的基本教程，并掌握了 MySQL 的基本知识。</li>
 </ul>  
 
@@ -28,6 +28,8 @@
 mysql = require "luasql.mysql"
 ```  
 
+我们可以通过 mysql 变量访问 luasql.mysql 中的 mysql 表，该表中存存储数据库操作相关的函数。
+
 ###建立连接 
 
 先初始化 MySQL 的环境，再建立一个连接。如下所示：  
@@ -37,7 +39,7 @@ local env  = mysql.mysql()
 local conn = env:connect('test','root','123456')
 ```  
 
-**上面的程序会与已存在的 MySQL 文件建立连接，并与创建的文件建立一个连接。**
+上面的程序会与已存在的 MySQL 数据库 test 建立连接。
 
 ###执行函数  （execute）
 
@@ -71,7 +73,7 @@ MySQL environment (004BB178)	MySQL connection (004BE3C8)
 0	nil
 ```
 
-如果发生错误，则函数将而一个错误消息，而不是 nil。下面是错误消息的一个例子：  
+如果发生错误，则函数将返回一个错误消息，成功执行则返回 nil。下面是错误消息的一个例子：  
 
 ```
 LuaSQL: Error executing query. MySQL: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '"id INTEGER, name TEXT)' at line 1
@@ -103,7 +105,7 @@ conn:execute([[DELETE from sample3 where id ='12']])
 
 ###查找语句   
 
-查找返回后，我们需要循环遍历每行以取得我们需要的数据。查找语句的示例如下：  
+成功查找返回后，我们需要循环遍历返回的所有行以取得我们需要的数据。查找语句的示例如下：  
 
 ```
 cursor,errorString = conn:execute([[select * from sample]])
@@ -115,11 +117,11 @@ while row do
 end
 ```  
 
-上面的代码中，我们先打开了一个 MySQL 连接。通过 execute 函数返回的游标(cursor)，我们可以遍历返回的表，取得我们查找的数据。
+上面的代码中，我们先打开了一个 MySQL 连接。通过 execute 函数返回的游标(cursor)，我们可以使用游标遍历返回的表，取得我们查找的数据。
 
 ###完整示例  
 
-下面的代码给出了用到了上面所提到的所有语句的完整例子。  
+下面这个例子用到了所有上面提到的数据的操作函数，请看下面这个完整的例子：  
 
 ```
 mysql = require "luasql.mysql"
@@ -159,15 +161,14 @@ Id: 12, Name: Raj
 
 ##执行事务  
 
-Transaction starts with START TRANSACTION; and ends with commit or rollback statement.
 事务是数据库中保证数据一致性的一种机制。事务有以下四个性质：  
 <ul>
 	<li>原子性：一个事务要么全部执行要么全部不执行。</li>
-	<li>一致性：事务开始前数据库是一致状态，事务结束后数据库状态也应该是一致。</li>
+	<li>一致性：事务开始前数据库是一致状态，事务结束后数据库状态也应该是一致的。</li>
 	<li>隔离性：多个事务并发访问时，事务之间是隔离的，一个事务的中间状态不能被其它事务可见。</li>
-	<li>持久性： 在事务完成以后，该事务所对数据库所作的更改便持久的保存在数据库之中，并不会被回滚。</li>	
+	<li>持久性： 在事务完成以后，该事务所对数据库所做的更改便持久的保存在数据库之中，并不会被回滚。</li>	
 </ul>
-事务以 START_TRANSACTION 开始，以 commit 或 rollback 语句结束。  
+事务以 START_TRANSACTION 开始，以 提交（commit）或 回滚（rollback）语句结束。  
 
 ###事务开始  
 
@@ -179,7 +180,7 @@ conn:execute([[START TRANSACTION;]])
 
 ###事务回滚  
 
-当需要取消事务执行时，我们需要执行如下的语句回滚至更改前状态。
+当需要取消事务执行时，我们需要执行如下的语句回滚至更改前的状态。
 
 ```
 conn:execute([[ROLLBACK;]])
@@ -193,7 +194,7 @@ conn:execute([[ROLLBACK;]])
 conn:execute([[COMMIT;]])
 ```
 
-前面我们已经了解了 MySQL 的基本知识。接下来，我们将解释一下基本的  SQL 操作。请记住事务的概念，虽然我们在 SQLite3 中我们不在解释它，但是它在 SQLite3 中同样适用。  
+前面我们已经了解了 MySQL 的基本知识。接下来，我们将解释一下基本的  SQL 操作。请记住事务的概念，虽然我们在 SQLite3 中我们不在解释它，但是它的概念在 SQLite3 中同样适用。  
 
 ##导入 SQLite 
 
@@ -207,7 +208,7 @@ conn:execute([[COMMIT;]])
 
 ###建立连接  
 
-我们初始化 sqlite 环境，然后为该环境创建一个连接。语法如下：  
+我们先初始化 sqlite 环境，然后为该环境创建一个连接。语法如下：  
 
 ```
 local env  = sqlite3.sqlite3()
@@ -248,7 +249,7 @@ SQLite3 environment (003EC918)	SQLite3 connection (00421F08)
 0	nil
 ```  
 
-如果发生错误，则函数将而一个错误消息，而不是 nil。下面是错误消息的一个例子：  
+如果发生错误，则函数将而一个错误消息；若成功执行则返回 nil。下面是错误消息的一个例子：  
 
 ```
 LuaSQL: unrecognized token: ""'id' INTEGER, 'name' TEXT)"
@@ -256,7 +257,7 @@ LuaSQL: unrecognized token: ""'id' INTEGER, 'name' TEXT)"
 
 ###插入语句  
 
-ＭySQL 插入语句的示例如下所示：  
+插入语句的示例如下所示：  
 
 ```
  conn:execute([[INSERT INTO sample values('11','Raj')]])
@@ -276,11 +277,12 @@ while row do
 end
 ```  
 
-上面的代码中，我们先打开了一个 sqlite3 连接。通过 execute 函数返回的游标(cursor)，我们可以遍历返回的表，取得我们查找的数据。
+上面的代码中，我们先打开了一个 sqlite3 连接。通过 execute 函数返回的游标(cursor)，我们可以遍历返回的表，以取得我们查找的数据。
 
 ###完整示例  
 
-下面的代码给出了用到了上面所提到的所有语句的完整例子。  
+
+下面这个例子用到了所有上面提到的数据的操作函数，请看下面这个完整的例子： 
 
 ```
 sqlite3 = require "luasql.sqlite3"
