@@ -1,7 +1,7 @@
 {
-    "name": "AWK 中文指南",
-    "introduction": "AWK是一种优良的文本处理工具，Linux及Unix环境中现有的功能最强大的数据处理引擎之一。",
-    "title": "为数据处理而生的语言 - 极客学院 Wiki",
-    "keywords": "AWK中文指南,AWK应用案例",
-    "description": "AWK 是 Unix/Linux 提供的样式扫描与处理工具，非常擅长处理结构化数据和生成表单。"
+    "name": "Lua 中文教程",
+    "introduction": "Lua 是一个小巧的脚本语言。其设计目的是为了嵌入应用程序中，从而为应用程序提供灵活的扩展和定制功能。",
+    "title": "简单灵活的脚本语言 - 极客学院 Wiki",
+    "keywords": "Lua 基础,Lua 进阶",
+    "description": "Lua 是一个小巧的脚本语言，本教程详细介绍了 Lua 的基础知识，并详细介绍了它在实际应用中是怎么发挥作用的。"
 }
