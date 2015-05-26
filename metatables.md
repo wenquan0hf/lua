@@ -1,4 +1,4 @@
-#Lua——元表  
+# Lua 元表  
 
 正如其名，元表也是表。不过，将元表与表相关联后，我们就可以通过设置元表的键和相关方法来改变表的行为。元方法的功能十分强大，使用元方法可以实现很多的功能，比如：  
 
@@ -27,7 +27,7 @@ setmetatable(mytable,mymetatable)
 mytable = setmetatable({},{})
 ```  
 
-##__index  
+## __index  
 
 下面的例子中，我们实现了在表中查找键不存在时转而在元表中查找该键的功能：  
 
@@ -66,7 +66,7 @@ mytable = setmetatable({key1 = "value1"}, { __index = { key2 = "metatablevalue" 
 print(mytable.key1,mytable.key2)
 ```  
 
-##__newindex  
+## __newindex  
 
 为元表添加 __newindex 后，当访问的键在表中不存在时，此时添加新键值对的行为将由此元方法（__newindex）定义。下面的例子中，如果访问的索引在表中不存在则在元表中新加该索引值（注意，是添加在另外一个表 mymetatable 中而非在原表 mytable 中。），具体代码如下(译注：请注意此处 __newindex 的值并非一个方法而是一个表。)：  
 
@@ -116,7 +116,7 @@ new value	"4"
 
 rawset 函数设置值时不会使用元表中的 __newindex 元方法。同样的，Lua 中也存的一个 rawget 方法，该方法访问表中键值时也不会调用 __index 的元方法。  
 
-##为表添加操作符行为  
+## 为表添加操作符行为  
 
 使用 + 操作符完成两个表组合的方法如下所示（译注：可以看出重载的意思了）：  
 
@@ -198,7 +198,7 @@ end
 	</tr>
 </table>  
 
-##__call  
+## __call  
 
 使用 __call 可以使表具有像函数一样可调用的特性。下面的例子中涉及两个表，主表 mytable 和 传入的实参表结构 newtable，程序完成两个表中值的求和。
 
@@ -225,7 +225,7 @@ print(mytable(newtable))
 70
 ```  
 
-##__tostring  
+## __tostring  
 
 要改变 print 语句的行为，我们需要用到 __tostring 元方法。下面是一个简单的例子：  
 

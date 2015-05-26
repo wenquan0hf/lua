@@ -1,6 +1,7 @@
-#Lua——文件 IO  
+# Lua 文件 I/O 
 
-Lua 的 IO 库用于读取或操作文件。Lua IO 库提供两类文件操作，它们分别是隐式文件描述符(implict file descriptors)和显式文件描述符(explicit file descriptors)。  
+Lua 的 IO 库用于读取或操作文件。Lua IO 库提供两类文件操作，它们分别是隐式文件描述符(implict file descriptors)和显式文件描述符(explicit file descriptors)。
+  
 在接下来的例子的，我们会用到一个示例文件 test.lua，文件内容如下：  
 
 ```
@@ -47,7 +48,7 @@ file = io.open (filename [, mode])
 	</tr>
 </table>
 
-##隐式文件描述符  
+## 隐式文件描述符  
 
 隐式文件描述符使用标准输入输出模式或者使用单个输入文件和输出文件。使用隐匿文件描述符的示例代码如下：  
 
@@ -120,7 +121,7 @@ io.close(file)
 	<li>io.lines(optional file name): 返回一个通用循环迭代器以遍历文件，每次调用将获得文件中的一行内容,当到文件尾时，将返回nil。若显示提供了文件句柄，则结束时自动关闭文件；使用默认文件时，结束时不会自动关闭文件。</li>
 </ul>  
 
-##显示文件描述符  
+## 显示文件描述符  
 
 我们也会经常用到显示文件描述符，因为它允许我们同时操作多个文件。这些函数与隐式文件描述符非常相似，只不过我们在这儿使用 file:function_name 而不是使用 io.function_name 而已。下面的例子使用显示文件描述符实现了与前面例子中完全相同的功能。  
 　

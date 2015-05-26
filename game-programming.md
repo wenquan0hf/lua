@@ -1,4 +1,4 @@
-#Lua——游戏开发  
+# Lua 游戏开发  
 
 Lua 语言因其结构和语法的简洁性而在各类游戏引擎中被广泛使用。游戏对图形画面要求非常苛刻，这无疑需消耗大量的内存空间，而这些内存空间的管理是非常棘手的问题。Lua 语言有自动的垃圾回收机制，这种自动化的内存管理机制也使得 Lua 受到游戏引擎开发者的青睐。著名的 Lua 游戏引擎主要包括：  
 
@@ -13,9 +13,10 @@ Lua 语言因其结构和语法的简洁性而在各类游戏引擎中被广泛�
 
 上面每一个游戏引擎都是基于 Lua 的，并且每一个都提供了丰富的 API。我们下面看一下每一款游戏引擎的特点。  
 
-##Corna SDK  
+## Corna SDK  
 
-这是一款支持 iPhone，iPad，Android 平台的移动设备游戏引擎。它提供了一个免费版本的 SDK, 不过该免费版本的功能也受到限制。你可以在需要的时候升级到其它版本。  
+这是一款支持 iPhone，iPad，Android 平台的移动设备游戏引擎。它提供了一个免费版本的 SDK, 不过该免费版本的功能也受到限制。你可以在需要的时候升级到其它版本。
+  
 Gorona SDK 提供了如下的特征：  
 <ul>
 	<li>物理与冲突处理接口</li>
@@ -30,7 +31,7 @@ Gorona SDK 提供了如下的特征：
 
 相比于使用 iOS 或 Android 系统原生 API， 使用上面的接口可以让我们的开发效率更高。  
 
-##Gideros Mobile  
+## Gideros Mobile  
 
 Gideros 提供 iOS 和 Android 跨平台的软件开发工具包（SDK）。它是一个免费的游戏引擎，其主要的优点包括：  
 <ul>
@@ -41,9 +42,10 @@ Gideros 提供 iOS 和 Android 跨平台的软件开发工具包（SDK）。它�
 	<li>原生速度：基于 C/C++ 和 openGL,应用可以以原生的运行，完全利用 CPU 和 GPU 的处理能力。</li>
 </ul>
 
-##ShiVa3D  
+## ShiVa3D  
 
-这一款 3D 的游戏引擎，它提供了图形化的编辑器，可以为 Web、终端、移动设备开发应用或游戏。它支持多个平台，包括：Windows，Mac，Linux，iOS，Android，BlackBerry，Palm OS，Wii，WebOS。  
+这一款 3D 的游戏引擎，它提供了图形化的编辑器，可以为 Web、终端、移动设备开发应用或游戏。它支持多个平台，包括：Windows，Mac，Linux，iOS，Android，BlackBerry，Palm OS，Wii，WebOS。
+  
 它主要的特点包括：  
 <ul>
 	<li>标准插件</li>
@@ -58,13 +60,14 @@ Gideros 提供 iOS 和 Android 跨平台的软件开发工具包（SDK）。它�
 
 ShiVa3D 的 Web 版本是免费的，但其它的版本是收费版本。  
 
-##Moai SDK  
+## Moai SDK  
 
 Moai SDK 是跨平台的移动游戏开发引擎，它支持 iPhone，iPad 以及 Android 系统。Moai　平台包括　Moai SDK，开源的引擎，以及 Moai 云。 Moai 云是一个 SaaS 平台，提供游戏部署的服务。不过，Moai 云平台已经关闭，现在只有游戏引擎是可用的。  
 
-##LOVE  
+## LOVE  
 
-LOVE 是一个开源的 2D 游戏的开始框架，它支持 Windows，Mac OS X 以及 Linux 多个平台。  
+LOVE 是一个开源的 2D 游戏的开始框架，它支持 Windows，Mac OS X 以及 Linux 多个平台。
+  
 它主要提供以下的开发接口：  
 <ul>
 	<li>音频接口</li>
@@ -76,9 +79,10 @@ LOVE 是一个开源的 2D 游戏的开始框架，它支持 Windows，Mac OS X 
 	<li>系统和定时器接口</li>
 </ul>
 
-##CryEngine  
+## CryEngine  
 
-CryEngine 是由德国的游戏引擎开发商 Cryteck 开发的游戏引擎。到目前为止，它已由第一代引擎发展到了第四代，是一个高级的游戏开发解决方案。它目前支持 PC，Xbox 360，PlayStation3，以及 WiiU。  
+CryEngine 是由德国的游戏引擎开发商 Cryteck 开发的游戏引擎。到目前为止，它已由第一代引擎发展到了第四代，是一个高级的游戏开发解决方案。它目前支持 PC，Xbox 360，PlayStation3，以及 WiiU。
+  
 它主有以下的优点：  
 <ul>
 	<li>视觉效果就像自然光线，态柔和阴影，实时动态全局光照，光传输容量控制，颗粒底纹，镶嵌等。</li>
@@ -88,6 +92,6 @@ CryEngine 是由德国的游戏引擎开发商 Cryteck 开发的游戏引擎。�
 	<li>游戏混合及分析，数据驱动的音响系统的动态声音和互动音乐等。</li>
 </ul>  
 
-##结束语  
+## 结束语  
 
 每个款游戏引擎都有着自己的优势以及不足之处。正确的选择游戏引擎会让你的开发变得容易和有趣得多。所以，在选择之前，请先仔细斟酌你的需求，分析哪一款游戏引擎真正的适合你，然后再决定使用它。

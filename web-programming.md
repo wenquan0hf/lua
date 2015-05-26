@@ -1,9 +1,10 @@
-#Lua——Web 编程  
+# Lua Web 编程  
 
-Lua 是一种非常灵活的语言，它经常被用在各种平台上，包括 web 应用。其中关于 Lua Web 项目最著名的就是 Kepler 项目了。Kepler 社区成立于 2004 年，一直致力于为 Lua 提供开源的 web 组件。  
+Lua 是一种非常灵活的语言，它经常被用在各种平台上，包括 web 应用。其中关于 Lua Web 项目最著名的就是 Kepler 项目了。Kepler 社区成立于 2004 年，一直致力于为 Lua 提供开源的 web 组件。
+  
 尽管其它开发者也已经推出了许多的 Lua web 应用框架，但是我们还是想主要介绍一下由 Kepler 社区开发的 web 开发组件。  
 
-##应用与框架  
+## 应用与框架  
 
 <ul>
 	<li>Orbit 是一个基于 WSAPI 的 MVC web 框架（译注： MVC，模型-视图-控制器）。</li>
@@ -15,14 +16,17 @@ Lua 是一种非常灵活的语言，它经常被用在各种平台上，包括 
 
 在本教程中，我们会让你了解到在 Web 应用开发中 Lua 可以完成哪些工作。了解更多安装和使用说明，可以参阅<a href="http://www.keplerproject.org/">kepler website</a>  
 
-###Orbit  
+### Orbit  
 
-Orbit 是一个 MVC 类型的 Lua web 框架。它完全抛弃了 CGILua 的脚本即应用的模型，在此模型中每个 Orbit 应用都可以放在一个文件中，如果你愿意，每个应用也可以被分割在多个文件到。  
-所有的 Orbit 应用都支持 WSAPI 协议，所以它们也就兼容 Xavante, CGI 和 Fastcgi。它还自带了一个启动器，以启动一个 Xavante 实例便于开发。  
-安装 Orbit 最简单的方式是使用 LuaRocks。 luarocks 用命令行的方式安装 orbit。因此，首先你需要安装<a href="http://luarocks.org/en/Download">luaRocks</a>。  
+Orbit 是一个 MVC 类型的 Lua web 框架。它完全抛弃了 CGILua 的脚本即应用的模型，在此模型中每个 Orbit 应用都可以放在一个文件中，如果你愿意，每个应用也可以被分割在多个文件到。 
+ 
+所有的 Orbit 应用都支持 WSAPI 协议，所以它们也就兼容 Xavante, CGI 和 Fastcgi。它还自带了一个启动器，以启动一个 Xavante 实例便于开发。 
+ 
+安装 Orbit 最简单的方式是使用 LuaRocks。 luarocks 用命令行的方式安装 orbit。因此，首先你需要安装<a href="http://luarocks.org/en/Download">luaRocks</a>。 
+ 
 如果你没安装所需的依赖，下面的步骤会引导你在 Unix/Linux 环境下搭建 Orbit 环境。  
 
-####安装 Apache  
+#### 安装 Apache  
 
 连接服务器，安装 Apache2。  
 
@@ -33,13 +37,13 @@ $ sudo a2enmod fcgid
 $ sudo /etc/init.d/apache2 force-reload
 ```  
 
-####安装 LuaRocks  
+#### 安装 LuaRocks  
 
 ```
 $ sudo apt-get install luarocks
 ```  
 
-####安装 WSAPI，FCGI，Orbit，Xavante  
+#### 安装 WSAPI，FCGI，Orbit，Xavante  
 
 ```
 $ sudo luarocks install orbit
@@ -47,7 +51,7 @@ $ sudo luarocks install wsapi-xavante
 $ sudo luarocks install wsapi-fcgi
 ```  
 
-####配置 Apache2  
+#### 配置 Apache2  
 
 ```
 $ sudo raj /etc/apache2/sites-available/default
@@ -69,7 +73,8 @@ $ sudo raj /etc/apache2/sites-available/default
 </IfModule>
 ```  
 
-配置好后重启服务器使得配置更改生效。  
+配置好后重启服务器使得配置更改生效。
+  
 为了使你的应用可以运行，你需要在你的 Orbit 应用根目录下的 .htaccess 文件中添加 +ExecCGI，在本例中根目录为 /var/www。  
 
 ```
@@ -77,7 +82,7 @@ Options +ExecCGI
 DirectoryIndex index.ws
 ```  
 
-####示例——Orbit  
+#### 示例——Orbit  
 
 ```
 #!/usr/bin/env index.lua
@@ -133,7 +138,7 @@ orbit.htmlify(generate)
 print(generate())
 ```  
 
-####创建表单  
+#### 创建表单  
 
 简单的表单创建代码如下：  
 
@@ -162,7 +167,7 @@ print(test())
 
 你可以在<a href="http://keplerproject.github.io/orbit/example.html">官网</a>找到关于 orbit 更加详细内容。  
 
-###WSPAI  
+### WSPAI  
 
 正如前面所说的，WSAPI 是大多数项目的基础，它内嵌了大量的特性。你现在可以在下面的这些系统平台上使用 WSAPI：  
 <ul>
@@ -210,7 +215,7 @@ end
 
 很容易看出来，上面的代码生成了一个简单的 html 页面。同时，你可以看到使用协程可以将 html 语句一条一条的返回给调用函数。最终返回的是 html 状态码（200）、头部以及 html 页面。  
 
-####Xavante  
+#### Xavante  
 
 Xavante 是一款支持 HTTP 1.1 的 Lua web 服务器。它采用模块化的结构设计，使用 URI 映射处理程序的方式进行路由。 Xavante 目前支持：  
 
@@ -274,7 +279,7 @@ xavante.HTTP{
 }
 ```  
 
-##Lua web 组件  
+## Lua web 组件  
 
 <ul>
 	<li>Copas：基于协程的分配器，可用于 TCP/IP 服务器。</li>
@@ -284,7 +289,7 @@ xavante.HTTP{
 	<li>Rings:提供在 Lua 中创建新的　Lua state 的方法。</li>
 </ul>
 
-##结束语  
+## 结束语  
 
 根据我们的需求，我们可以找到很多适合我们的 Lua web　框架和组件。下面列出了另外一些可用的框架：　　
 
