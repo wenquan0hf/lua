@@ -3,7 +3,7 @@
   - [运行环境](environment.md)
   - [基本语法](basic-syntax.md)
   - [变量](variables.md)
-  - [日期类型](date-types.md)
+  - [日期类型](data-types.md)
   - [操作符](operators.md)
   - [循环](loop.md)
   - [决策](decision-making.md)
@@ -15,7 +15,7 @@
   - [模块](modules.md) 
   - [元表](metatables.md)  
   - [协程](coroutines.md) 
-  - [文件 I/O](file.md)
+  - [文件 I/O](file-io.md)
   - [错误处理](error-handling.md)
 - lua 进阶
   - [调试](debugging.md)
